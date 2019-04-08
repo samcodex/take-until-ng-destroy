@@ -1,27 +1,92 @@
-# TakeUntilNgDestroyApp
+# take-until-ng-destroy
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.9.
+Unsubscribe subscriptions when the component or service is destroyed
 
-## Development server
+## Features
+1. Type checking to make sure the interface <b>ngOnDestroy</b> is implemented
+2. Using observable pipe function to unsubscribe
+3. Using observable prototype method to unsubscribe
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
+npm install take-until-ng-destroy --save
 
-## Code scaffolding
+----
+## Usage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### **Using observable pipe function**
 
-## Build
+* import pipe function 'takeUntilNgDestroy'
+```
+import { takeUntilNgDestroy } from 'take-until-ng-destroy';
+```
+* use 'takeUntilNgDestroy' in Observable.pipe() method. Real time type checking to make sure the interface <b>ngOnDestroy</b> is implemented in the component or service.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+@Component({
+    ....
+})
+export class Page1Component implements OnDestroy {
 
-## Running unit tests
+  constructor() { }
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  ngOnInit() {
+    interval(1000)
+      .pipe(takeUntilNgDestroy(this))
+      .subscribe({
+        next(val) { console.log('page1 - ', val); },
+        complete() { console.log('page1 - destroyed'); }
+      });
+  }
 
-## Running end-to-end tests
+  ngOnDestroy() {}
+}
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### **Using observable prototype method**
 
-## Further help
+* Add the following codes to the main code, such as main.ts
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+// import function ngDestroySubscription
+import { ngDestroySubscription } from 'take-until-ng-destroy';
+```
+
+```
+// Declare and add the prototype method 'takeUntilNgDestroy' to Observable
+declare module 'rxjs/internal/Observable' {
+  interface Observable<T> {
+    takeUntilNgDestroy: typeof ngDestroySubscription;
+  }
+}
+
+Observable.prototype.takeUntilNgDestroy = ngDestroySubscription;
+
+```
+
+* Use Observable method <b>takeUntilNgDestroy</b> directly. Real time type checking to make sure the interface <b>ngOnDestroy</b> is implemented in the component or service.
+```
+@Component({
+  ...
+})
+export class Page2Component implements OnDestroy {
+
+  constructor() { }
+
+  ngOnInit() {
+    interval(1000)
+      .takeUntilNgDestroy(this)
+      .subscribe({
+        next(val) { console.log('page2 - ', val); },
+        complete() { console.log('page2 - destroyed'); }
+      });
+  }
+
+  ngOnDestroy() {}
+}
+
+```
+
+
+----
+## License
+MIT

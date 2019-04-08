@@ -1,0 +1,25 @@
+{
+  "name": "take-until-ng-destroy",
+  "version": "0.0.1",
+  "description": "Unsubscribe observables when Angular components and services are destroyed",
+  "keywords": [
+    "Angular",
+    "RxJS"
+  ],
+  "author": "Samuel Xie<xie.samuel@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/samcodex/take-until-ng-destroy.git"
+  },
+  "homepage": "",
+  "bugs": {
+    "url": "https://github.com/samcodex/take-until-ng-destroy/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "rxjs-tslint-rules": "^4.15.0",
+    "take-until-ng-destroy-rules": "file:../../../take-until-ng-destroy-rules"
+  }
+}

@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      // "take-until-ng-destroy": [
+      //   "dist/take-until-ng-destroy"
+      // ],
+      // "take-until-ng-destroy/*": [
+      //   "dist/take-until-ng-destroy/*"
+      // ]
+    }
   }
 }

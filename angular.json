@@ -121,6 +121,41 @@
           }
         }
       }
+    },
+    "take-until-ng-destroy": {
+      "root": "projects/take-until-ng-destroy",
+      "sourceRoot": "projects/take-until-ng-destroy/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/take-until-ng-destroy/tsconfig.lib.json",
+            "project": "projects/take-until-ng-destroy/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/take-until-ng-destroy/src/test.ts",
+            "tsConfig": "projects/take-until-ng-destroy/tsconfig.spec.json",
+            "karmaConfig": "projects/take-until-ng-destroy/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/take-until-ng-destroy/tsconfig.lib.json",
+              "projects/take-until-ng-destroy/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "take-until-ng-destroy-app"

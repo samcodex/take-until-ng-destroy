@@ -1,0 +1,7 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/take-until-ng-destroy",
+  "lib": {
+    "entryFile": "src/public_api.ts"
+  }
+}
