@@ -1,6 +1,6 @@
 {
   "name": "take-until-ng-destroy",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Unsubscribe observables when Angular components and services are destroyed",
   "keywords": [
     "Angular",
@@ -17,7 +17,5 @@
     "url": "https://github.com/samcodex/take-until-ng-destroy/issues"
   },
   "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
   }
 }
