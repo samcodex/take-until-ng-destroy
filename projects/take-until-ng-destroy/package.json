@@ -1,6 +1,6 @@
 {
   "name": "take-until-ng-destroy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Unsubscribe observables when Angular components and services are destroyed",
   "keywords": [
     "Angular",
@@ -18,8 +18,6 @@
   },
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
-    "rxjs-tslint-rules": "^4.15.0",
-    "take-until-ng-destroy-rules": "file:../../../take-until-ng-destroy-rules"
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
   }
 }
